@@ -3,14 +3,14 @@
     <div class="menu-container">
       <div class="menu menu--framed">
         <nav class="navigation-group">
-          <AppLink
+          <BasicLink
             v-for="section in sections"
             :key="section.label"
             class="navigation-group__item"
             :url="`#${section.anchor}`"
           >
             {{ section.label }}
-          </AppLink>
+          </BasicLink>
         </nav>
       </div>
     </div>
@@ -20,13 +20,11 @@
 <script lang="ts">
 import Vue from 'vue'
 import { Component, Prop } from 'vue-property-decorator'
-import AppLink from '~/components/ui/AppLink.vue'
+import { InnerNavLink } from '~/constants/menuLinks'
 
-@Component({
-  components: { AppLink }
-})
-export default class extends Vue {
-  @Prop({ type: Array, default: [] }) sections!: any
+@Component
+export default class InnerNavigation extends Vue {
+  @Prop({ type: Array, default: [] }) sections!: InnerNavLink[]
 }
 </script>
 
